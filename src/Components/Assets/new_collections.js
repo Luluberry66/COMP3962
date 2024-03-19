@@ -3,7 +3,6 @@ import p2_img from "./product_3.png";
 import p3_img from "./product_4.png";
 import p4_img from "./product_5.png";
 
-
 let new_collections = [
   {
     id: 12,

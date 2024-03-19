@@ -5,8 +5,6 @@ import p4_img from "./product_4.png";
 import p5_img from "./product_5.png";
 import p6_img from "./product_6.png";
 
-
-
 let all_product = [
   {
     id: 1,
@@ -56,8 +54,6 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
   },
- 
-  
 ];
 
 export default all_product;

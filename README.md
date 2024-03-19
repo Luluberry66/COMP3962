@@ -1,5 +1,3 @@
-
-
 Notes to ourselves to remember how to run on local host
 
 ### `npm start`
