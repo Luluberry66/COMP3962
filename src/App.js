@@ -8,6 +8,9 @@ import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 import LoginSignup from "./Pages/LoginSignup";
+import Login from "./Pages/Login";
+import Checkout from "./Pages/Checkout";
+import Thankyou from "./Pages/Thankyou";
 import shop_banner from "./Components/Assets/cloud1.png";
 
 function App() {
@@ -24,7 +27,10 @@ function App() {
             <Route path=":productId" element={<Product />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<LoginSignup />} />
+          <Route path="/signup" element={<LoginSignup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/thankyou" element={<Thankyou />} />
         </Routes>
       </BrowserRouter>
     </div>

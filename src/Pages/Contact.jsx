@@ -6,7 +6,7 @@ import contact_banner from '../Components/Assets/cloud3.png'
 const Contact = () => {
   return (
     <div>
-      <Banner title="Contact Us" eyebrow="eyebrow" image={contact_banner}/>
+      <Banner title="Contact Us" eyebrow="We would love to hear from you" image={contact_banner}/>
       <div class="container">
   <div class="contact-info">
     <h2>Reach Out to Us</h2>
