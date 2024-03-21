@@ -24,6 +24,9 @@
 .hero-hand-icon img{
     width: 70px;
 }
+.hero-big-blurb{
+    margin-top: 25px;
+}
 .hero-latest-btn{
     display: flex;
     align-items: center;

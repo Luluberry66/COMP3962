@@ -1,19 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Hero.css'
-import hand_icon from '../Assets/hand_icon.png'
+import cloud_icon from '../Assets/clouds_transparent_icon.png'
 import arrow_icon from '../Assets/arrow.png'
-import hero_image from '../Assets/hero_image.png'
 
 const Hero = () => {
   return (
     <div className='hero'>
       <div className="hero-left">
-        <h2>NEW ARRIVALS ONLY</h2>
-        <div>
+        <h2>New shipments every season</h2>
+        <div className='hero-big-blurb'>
             <div className="hero-hand-icon">
-                <p>new</p>
-                <img src={hand_icon} alt="" />
+                <p>Cloud</p>
+                <img src={cloud_icon} alt="" />
             </div>
             <p>collections</p>
             <p>for everyone</p>
