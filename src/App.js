@@ -12,8 +12,12 @@ import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Thankyou from "./Pages/Thankyou";
 import shop_banner from "./Components/Assets/cloud1.png";
+import home_bg_image from "./Components/Assets/hero_image.png";
 
 function App() {
+  const backgroundImage = 'url("' + home_bg_image + '") fixed center no-repeat';
+  document.body.style.background = backgroundImage;
+
   return (
     <div>
       <BrowserRouter>
