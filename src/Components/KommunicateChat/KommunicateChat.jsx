@@ -12,6 +12,11 @@ class KommunicateChat extends Component {
         s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
         var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
         window.kommunicate = m; m._globals = kommunicateSettings;
+
+        kommunicateSettings.onInit = function() {
+            var css = ".mck-running-on{color: white} .mck-powered-by{display: none}"; // Add your custom CSS here
+            window.Kommunicate.customizeWidgetCss(css); 
+        };
       })(document, window.kommunicate || {});
     }
     render() {
