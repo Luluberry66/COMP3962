@@ -12,6 +12,7 @@ import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Thankyou from "./Pages/Thankyou";
 import shop_banner from "./Components/Assets/cloud1.png";
+import KommunicateChat from "./Components/KommunicateChat/KommunicateChat";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/thankyou" element={<Thankyou />} />
         </Routes>
       </BrowserRouter>
+      <KommunicateChat/>
     </div>
   );
 }
