@@ -18,15 +18,16 @@ const Hero = () => {
             <p>collections</p>
             <p>for everyone</p>
         </div>
-        <div className="hero-latest-btn">
-          <Link to="/shop"> {/* Link to the /shop route */}
-            <div>Shop Now</div>
-            <img src={arrow_icon} alt="" />
-          </Link>
-        </div>
       </div>
       <div className="hero-right">
-        <img src={hero_image} alt="" />
+      <div className="hero-latest-btn">
+          <Link to="/shop"> {/* Link to the /shop route */}
+            <div>Shop Now</div>
+            <div className="arrow-center">
+              <img src={arrow_icon} alt="" />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   )
