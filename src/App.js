@@ -13,6 +13,9 @@ import Checkout from "./Pages/Checkout";
 import Thankyou from "./Pages/Thankyou";
 import shop_banner from "./Components/Assets/cloud1.png";
 import home_bg_image from "./Components/Assets/hero_image.png";
+import shop_bg_image from "./Components/Assets/shop_bg.webp";
+import purple_bg_image from "./Components/Assets/purple_bg.webp";
+import contact_bg_image from "./Components/Assets/contact_bg.webp";
 import KommunicateChat from "./Components/KommunicateChat/KommunicateChat";
 
 function App() {
@@ -24,7 +27,16 @@ function App() {
       backgroundImage = home_bg_image;
       break;
     case "/shop":
-      backgroundImage = "none";
+      backgroundImage = shop_bg_image;
+      break;
+    case "/about":
+      backgroundImage = purple_bg_image;
+      break;
+    case "/contact":
+      backgroundImage = contact_bg_image;
+      break
+    case "/signup":
+      backgroundImage = home_bg_image;
       break;
     default:
       backgroundImage = "none";

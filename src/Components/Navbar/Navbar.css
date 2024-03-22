@@ -94,6 +94,10 @@
     display: none;
 }
 
+.company-name {
+    font-family: 'El Messiri', sans-serif;
+}
+
 /* -------- media query---------- */
 @media(max-width:900px) {
     .navbar {

@@ -32,7 +32,7 @@ const Navbar = () => {
     <div className='navbar'>
       <Link to='/' onClick={()=>{setMenu("home")}} className="nav-logo">
         <img src={logo} alt="" />
-        <p>NUVOLA</p>
+        <p className='company-name'>NUVOLA</p>
       </Link>
       <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="" />
       <ul ref={menuRef} className="nav-menu">

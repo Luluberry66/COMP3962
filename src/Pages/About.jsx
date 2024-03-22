@@ -6,7 +6,7 @@ import about_banner from '../Components/Assets/cloud2.png'
 const About = () => {
   return (
     <div>
-    <Banner title="About Us" eyebrow="Learn More About Our Team!" image={about_banner}/>
+    <Banner title="About Us" eyebrow="Learn More About Our Team!"/>
       <div class="container">
   <div class="team-member">
     <img src="avatar1.jpg" alt="Team Member"/>
