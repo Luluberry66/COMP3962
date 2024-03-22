@@ -18,6 +18,7 @@ import KommunicateChat from "./Components/KommunicateChat/KommunicateChat";
 function App() {
   const backgroundImage = 'url("' + home_bg_image + '") fixed center no-repeat';
   document.body.style.background = backgroundImage;
+  document.body.style.backgroundSize = "cover";
 
   return (
     <div>
