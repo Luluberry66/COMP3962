@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import ShopContextProvider from "./Context/ShopContext";
 import UserInfoProvider from "./Context/LoggedIn";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <UserInfoProvider>
     <ShopContextProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ShopContextProvider>
   </UserInfoProvider>
 );
