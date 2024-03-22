@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import './Hero.css'
 import cloud_icon from '../Assets/clouds_transparent_icon.png'
 import arrow_icon from '../Assets/arrow.png'
+import { UserInfoContext } from '../../Context/LoggedIn'
 
 const Hero = () => {
-  return (
+
+      return (
     <div className='hero'>
       <div className="hero-left">
         <h2>New shipments every season</h2>

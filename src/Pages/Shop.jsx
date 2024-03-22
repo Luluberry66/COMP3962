@@ -4,13 +4,14 @@ import { ShopContext } from '../Context/ShopContext'
 import dropdown_icon from '../Components/Assets/dropdown_icon.png'
 import Item from '../Components/Item/Item'
 import Banner from '../Components/Hero/Banner'
+import shop_banner from '../Components/Assets/cloud1.png'
 
-const Shop = (props) => {
+
+const Shop = () => {
   const {all_product} = useContext(ShopContext);
   return (
     <div className='shop-category'>
-      <Banner image={props.banner} eyebrow="NEW ARRIVALS!" title="Shop With Us Now!" />
-      {/* <img className='shopcategory-banner' src={props.banner} alt="" /> */}
+      <Banner title="Shop" eyebrow="shop with us!" image={shop_banner}/>
       <div className="shopcategory-indexSort">
         <p>
           <span>Showing 1-12</span> out of 36 products
