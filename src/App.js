@@ -11,6 +11,8 @@ import LoginSignup from "./Pages/LoginSignup";
 import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import Thankyou from "./Pages/Thankyou";
+import MyAccount from "./Pages/MyAccount";
+import History from "./Pages/History";
 import shop_banner from "./Components/Assets/cloud1.png";
 import home_bg_image from "./Components/Assets/hero_image.png";
 import shop_bg_image from "./Components/Assets/shop_bg.webp";
@@ -34,7 +36,13 @@ function App() {
       break;
     case "/contact":
       backgroundImage = contact_bg_image;
-      break
+      break;
+    case "/account":
+      backgroundImage = contact_bg_image;
+      break;
+    case "/history":
+      backgroundImage = contact_bg_image;
+      break;
     case "/signup":
       backgroundImage = home_bg_image;
       break;
@@ -62,8 +70,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/thankyou" element={<Thankyou />} />
+        <Route path="/account" element={<MyAccount />} />
+        <Route path="/history" element={<History />} />
       </Routes>
-      <KommunicateChat/>
+      <KommunicateChat />
     </div>
   );
 }

@@ -3,9 +3,11 @@ import './Navbar.css'
 import logo from '../Assets/nuvola_logo_v1.png'
 import cart_icon from '../Assets/cart_icon.png'
 import nav_dropdown from '../Assets/nav_dropdown.png'
+import account_icon from '../Assets/account_icon.png'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../../Context/ShopContext'
 import { UserInfoContext } from '../../Context/LoggedIn'
+
 
 const Navbar = () => {
 
@@ -13,9 +15,6 @@ const Navbar = () => {
     const {getTotalCartItems}= useContext(ShopContext);
     const userInfoContext = useContext(UserInfoContext);
     const { isLoggedIn , setIsLoggedIn, username} = userInfoContext;
-    
-   
-
     const menuRef = useRef();
     
 
@@ -45,10 +44,10 @@ const Navbar = () => {
       <div className="nav-login-cart">
         {!isLoggedIn &&  <Link to='/signup'><button>Login</button></Link> }
         {isLoggedIn &&   <>
-        <div className='hero-columns'>
-          {isLoggedIn && <h2>Welcome back {username}!</h2>}
+        <div className='hero-columns' >
+          {isLoggedIn && <Link to='/account'><img src={account_icon}  style={{ width: '24px', height: '24px' }} alt="" /></Link>}
         </div>
-        <button onClick={logoutBtn}>Logout</button>
+        <button style={{ width:'100px'}} onClick={logoutBtn}>Logout</button>
         </>}
        
         <Link to='/cart'><img src={cart_icon} alt="" /></Link>
