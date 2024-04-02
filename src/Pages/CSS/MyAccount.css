@@ -58,8 +58,13 @@
 .transaction {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    padding: 10px 0;
     border-bottom: 1px solid #ececec;
+}
+
+.transaction span {
+    margin-right: 15px;
 }
 
 .transaction:last-child {
