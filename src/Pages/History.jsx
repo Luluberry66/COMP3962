@@ -26,13 +26,21 @@ const History = () => {
     }, {});
   };
 
-  // Grouped transactions object
   const groupedTransactions = groupTransactionsByDate(transactions);
 
   return (
     <div className='loginsignup'>
-      <div className="loginsignup-container">
-        {/* ... rest of your existing component ... */}
+     <div className="loginsignup-container">
+        <div className="navigation-tabs">
+          <NavLink to="/account" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
+            Account Settings
+          </NavLink>
+          <NavLink to="/history" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
+            Transaction History
+          </NavLink>
+        </div>
+
+        <h1>Transaction History</h1>
         <div className="transaction-history">
           {Object.keys(groupedTransactions).map((date) => (
             <div key={date} className="transaction-date-group">
