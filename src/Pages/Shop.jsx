@@ -15,7 +15,7 @@ const Shop = () => {
       <div className='white-strip'>
         <div className="shopcategory-indexSort">
           <p>
-            <span>Showing 1-12</span> out of 36 products
+            <span>Showing 1-8</span> out of 36 products
           </p>
           <div className="shopcategory-sort">
             Sort by <img src={dropdown_icon} alt="" />
