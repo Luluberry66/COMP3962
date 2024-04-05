@@ -1,4 +1,5 @@
 import express from 'express';
+import {router} from './router.js';
 import path from 'path';
 // Import necessary AWS SDK v3 packages
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
@@ -27,12 +28,18 @@ const docClient = DynamoDBDocumentClient.from(ddbClient); // Initialize DynamoDB
 const cognitoClient = new CognitoIdentityProviderClient({ region: 'us-west-2' });
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(router);  // Use router
 const port = process.env.PORT || 5000;
 
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
 });
 
+// export dynamoDB credentialed modules
+export { docClient, PutCommand, GetCommand, ScanCommand, DeleteCommand, UpdateCommand };
+
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log('Server is running on port 5000');
 });
