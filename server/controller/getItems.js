@@ -6,7 +6,7 @@ export const getItems = async (req, res) => {
     };
     try {
         const data = await docClient.send(new ScanCommand(params));
-        res.json(data.Items);
+        res.json( data.Items );
     } catch (err) {
         console.error('Error getting tasks from DynamoDB:', err);
         res.status(500).json({ error: 'Internal server error' });
