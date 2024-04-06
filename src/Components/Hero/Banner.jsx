@@ -4,7 +4,7 @@ import hand_icon from '../Assets/hand_icon.png'
 import arrow_icon from '../Assets/arrow.png'
 import hero_image from '../Assets/hero_image.png'
 
-const Hero = (props) => {
+const Banner = (props) => {
   return (
     <div className='hero' style={{ backgroundImage: `url(${props.image})` }}>
     <div className="hero-left">
@@ -19,4 +19,4 @@ const Hero = (props) => {
   )
 }
 
-export default Hero
+export default Banner

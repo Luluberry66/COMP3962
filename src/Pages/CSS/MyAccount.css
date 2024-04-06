@@ -1,0 +1,83 @@
+.input-group label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #c9c9c9;
+    margin-bottom: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-group input[disabled] {
+    background-color: #f3f3f3;
+    color: #5c5c5c;
+}
+
+.input-group button {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px;
+    align-self: flex-start;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navigation-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-tabs a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.navigation-tabs .active {
+    border-bottom: 2px solid #ff4141;
+    color: #ff4141;
+}
+
+.transaction-list {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ececec;
+}
+
+.transaction span {
+    margin-right: 15px;
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-date-group {
+    margin-bottom: 20px;
+}
+
+.transaction-date-group h2 {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin: 0;
+    color: #333;
+}

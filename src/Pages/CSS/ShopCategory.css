@@ -1,3 +1,12 @@
+.checkout-container {
+    background-color: #f8e4fc;
+}
+
+.white-strip {
+    background-color: white;
+    padding: 15px 0px 15px 0px;
+}
+
 .shopcategory-banner{
     display: block;
     margin: 30px auto;
