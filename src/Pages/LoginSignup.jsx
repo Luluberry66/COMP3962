@@ -21,24 +21,37 @@ const LoginSignup = () => {
     setShowReminder(false);
   };
 
-  const handleContinueClick = () => {
+  const handleContinueClick = async () => {
     if (isChecked) {
       if (!usernameTemp.trim() || !emailTemp.trim() || !passwordTemp.trim()) {
-        setShowReminder(true); // Show reminder message if any field is empty
-       
+        setShowReminder(true);
       } else {
-        // TODO: send user data to backend to store for future login:
-        // sendUserData()=>{
-          // data: {
-          //   username: username
-          //   email: email
-          //   password: password
-          // }
-        // }
-        setEmail(emailTemp)
-        setUsername(usernameTemp)
-        setIsLoggedIn(true)
-        navigate('/');
+        try {
+          const response = await fetch('http://localhost:5000/register', { // TODO: need to change this to the correct endpoint
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: usernameTemp,
+              email: emailTemp,
+              password: passwordTemp,
+            }),
+          });
+
+          if (!response.ok) {
+            navigate('/signup');
+            throw new Error('Failed to create user');
+          }
+
+          setEmail(emailTemp);
+          setUsername(usernameTemp);
+          setIsLoggedIn(true);
+          navigate('/');
+        } catch (error) {
+          console.error('Error creating user:', error);
+          navigate('/signup')
+        }
       }
     } else {
       setShowReminder(true);

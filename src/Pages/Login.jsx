@@ -16,21 +16,35 @@ const Login = () => {
     setUsername, } = userInfoContext;
 
 
-  const handleLoginClick = () => {
+  const handleLoginClick = async () => {
       if (!emailTemp.trim() || !password.trim()) {
         setShowReminder(true); // Show reminder message if any field is empty
       
       } else {
-        // TODO: send login data to backend checking if it exists. if exists you log in, if not, return message to user:
-        // sendUserData()=>{
-          // data: {
-          //   email: email
-          //   password: password
-          // }
-        // }
-        setEmail(emailTemp)
-        setIsLoggedIn(true)
-        navigate('/');
+        try {
+          const response = await fetch('http://localhost:5000/authenticateUser', { // TODO: need to change this to the correct endpoint
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: emailTemp,
+              password: password,
+            }),
+          });
+
+          if (!response.ok) {
+            navigate('/login');
+            throw new Error('Failed to authenticate user');
+          }
+
+          setEmail(emailTemp);
+          setIsLoggedIn(true);
+          navigate('/');
+        } catch (error) {
+          console.error('Error authenticating user:', error);
+          navigate('/login')
+        }
       }
   };
 
