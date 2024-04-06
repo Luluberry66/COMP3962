@@ -8,6 +8,18 @@ const Home = () => {
     fetch("/api").then(res => res.json()).then(data => console.log(data))
   }, [])
 
+  // test post 
+
+  useEffect(() => {
+    fetch("testPost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: "Posting...." })
+    }).then(res => res.json()).then(data => console.log(data))
+  }, [])
+
   return (
     <div>
       <Hero/>

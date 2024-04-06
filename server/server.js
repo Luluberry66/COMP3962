@@ -1,6 +1,9 @@
 import express from 'express';
 import {router} from './router.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+
 // Import necessary AWS SDK v3 packages
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand, GetCommand, ScanCommand, DeleteCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
@@ -30,9 +33,20 @@ const cognitoClient = new CognitoIdentityProviderClient({ region: 'us-west-2' })
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(router);  // Use router
 const port = process.env.PORT || 5000;
 
+// for deployment: don't touch this!!!!!!!!!!!!!! by Grace
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// app.use(router);  // Use router
+// app.use(express.static(path.join(__dirname, 'build')));
+
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
+// Test route
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
 });
