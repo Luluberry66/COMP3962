@@ -27,7 +27,7 @@ const LoginSignup = () => {
         setShowReminder(true);
       } else {
         try {
-          const response = await fetch('http://localhost:5000/register', { // TODO: need to change this to the correct endpoint
+          const response = await fetch('/register', { // TODO: need to change this to the correct endpoint
             method: 'POST',
             credentials: 'include',
             headers: {
