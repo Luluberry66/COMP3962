@@ -4,25 +4,17 @@ import { UserInfoContext } from "./LoggedIn";
 
 export const ShopContext =  createContext(null);
 
-// const getDefaultCart = ()=>{
-//     let cart = {};
-//     for (let index = 0; index < backup_product.length+1; index++) {
-//         cart[index] = 0;
-//     }
-//     return cart;
-// }
+const getDefaultCart = ()=>{
+    let cart = {};
+    for (let index = 0; index < backup_product.length+1; index++) {
+        cart[index] = 0;
+    }
+    return cart;
+}
 
 const ShopContextProvider = (props) => {
 
     const {isLoggedIn} = useContext(UserInfoContext);
-
-    const getDefaultCart = ()=>{
-        let cart = {};
-        for (let index = 0; index < backup_product.length+1; index++) {
-            cart[index] = 0;
-        }
-        return cart;
-    }
 
     // State to hold all products
     const [all_product, setAllProduct] = useState([]);
