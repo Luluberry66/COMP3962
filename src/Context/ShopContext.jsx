@@ -1,17 +1,28 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
 import backup_product from "../Components/Assets/all_product";
+import { UserInfoContext } from "./LoggedIn";
 
 export const ShopContext =  createContext(null);
 
-const getDefaultCart = ()=>{
-    let cart = {};
-    for (let index = 0; index < backup_product.length+1; index++) {
-        cart[index] = 0;
-    }
-    return cart;
-}
+// const getDefaultCart = ()=>{
+//     let cart = {};
+//     for (let index = 0; index < backup_product.length+1; index++) {
+//         cart[index] = 0;
+//     }
+//     return cart;
+// }
 
 const ShopContextProvider = (props) => {
+
+    const {isLoggedIn} = useContext(UserInfoContext);
+
+    const getDefaultCart = ()=>{
+        let cart = {};
+        for (let index = 0; index < backup_product.length+1; index++) {
+            cart[index] = 0;
+        }
+        return cart;
+    }
 
     // State to hold all products
     const [all_product, setAllProduct] = useState([]);
@@ -31,7 +42,36 @@ const ShopContextProvider = (props) => {
         fetchProducts();
     }, []); // Empty dependency array ensures this effect runs only once
 
+
+    // shopping cart state
     const [cartItems,setCartItems] = useState(getDefaultCart());
+    console.log("Initial",cartItems);
+
+    if (isLoggedIn) {
+        console.log('User is logged in');
+    } else {
+        console.log('User is not logged in');
+    }
+
+    useEffect(() => {
+        fetch('/getShoppingCart', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            if (data.shoppingCart) {
+                setCartItems(data.shoppingCart);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }, []); 
 
     const clearCart = () =>{
         setCartItems(getDefaultCart());
@@ -41,10 +81,26 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
         console.log(cartItems);
+        // fetch('/updateShoppingCart', {
+        //     method: 'POST',
+        //     credentials: 'include',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ shoppingCart: cartItems }),
+        // })
     }
 
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+        // fetch('/updateShoppingCart', {
+        //     method: 'POST',
+        //     credentials: 'include',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ shoppingCart: cartItems }),
+        // })
     }
     
     const getTotalCartAmount = () => {

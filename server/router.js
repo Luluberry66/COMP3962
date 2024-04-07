@@ -4,6 +4,7 @@ import express from 'express';
 import { getItems } from './controller/getItems.js';
 import { testPost } from './controller/controller.js';
 import { register, authenticateUser } from './controller/userController.js';
+import { getShoppingCart, updateShoppingCart } from './controller/checkoutController.js';
 
 
 // create router
@@ -17,5 +18,9 @@ router.post('/testPost', testPost);
 router.post('/authenticateUser', authenticateUser);
 
 router.post('/register', register);
+
+router.get('/getShoppingCart', getShoppingCart);
+
+router.post('/updateShoppingCart', updateShoppingCart);
 
 export { router };
