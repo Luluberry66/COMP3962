@@ -31,6 +31,7 @@ const authenticateUser = async (req, res) => {
     });
     req.session.email = email;
     req.session.authenticated = true;
+    // console.log(req.session);
 }
 
 const register = async (req, res) => {
@@ -58,6 +59,8 @@ const register = async (req, res) => {
                     email: email,
                     name: name,
                     id: id,
+                    shoppingCart: {},
+                    order: {},
                 },
             };
             try {

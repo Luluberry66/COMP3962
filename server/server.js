@@ -27,7 +27,11 @@ const docClient = DynamoDBDocumentClient.from(ddbClient); // Initialize DynamoDB
 const cognitoClient = new AWS.CognitoIdentityServiceProvider({ region: 'us-west-2' });
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    credentials: true, // Allow credentials (cookies, sessions)
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -36,6 +40,7 @@ app.use(session({
     secret: 'a5llks2aj4fkls8ajfj2an6zx42cnw34o',
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: 'auto' },
 }))
 const port = process.env.PORT || 5000;
 
@@ -53,6 +58,7 @@ app.use(router);  // Use router
 // Test route
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
+    console.log(req.session);
 });
 
 // export dynamoDB credentialed modules
