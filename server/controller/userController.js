@@ -60,7 +60,6 @@ const register = async (req, res) => {
                     name: name,
                     id: id,
                     shoppingCart: {},
-                    order: {},
                 },
             };
             try {
@@ -77,4 +76,16 @@ const register = async (req, res) => {
     req.session.authenticated = true;
 }
 
-export { authenticateUser, register };
+const logout = (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error logging out:', err);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            console.log('successfully logged out');
+            res.json({ success: 'User logged out' });
+        }
+    });
+}
+
+export { authenticateUser, register, logout };

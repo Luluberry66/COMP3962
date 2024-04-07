@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './CSS/MyAccount.css';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { UserInfoContext } from '../Context/LoggedIn'
@@ -8,16 +8,42 @@ const History = () => {
   const navigate = useNavigate();
   
   // Dummy data for transaction history with added date property
-  const transactions = [
-    { id: 1, orderNumber: '10001', item: 'Cumulus Cloud', price: '$20.00', date: '2024-04-01' },
-    { id: 2, orderNumber: '10002', item: 'Stratus Cloud', price: '$15.00', date: '2024-04-01' },
-    { id: 3, orderNumber: '10003', item: 'Cirrus Cloud', price: '$25.00', date: '2024-04-02' }
-  ];
+  // const transactions = [
+  //   { orderNumber: '10001', item: 'Cumulus Cloud', price: '$20.00', date: '2024-04-01' },
+  //   { orderNumber: '10002', item: 'Stratus Cloud', price: '$15.00', date: '2024-04-01' },
+  //   { orderNumber: '10003', item: 'Cirrus Cloud', price: '$25.00', date: '2024-04-02' }
+  // ];
+
+  const [transactions, setTransactions] = useState([]);
+
+  // fetch transaction history
+  useEffect(() => {
+    fetch('/getOrderHistory', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.error) {
+          setIsLoggedIn(false);
+          navigate('/login');
+        } else {
+          setTransactions(data.orders);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   // Function to group transactions by date
   const groupTransactionsByDate = (transactions) => {
     return transactions.reduce((groups, transaction) => {
-      const date = transaction.date;
+      const date = transaction.orderDate;
       if (!groups[date]) {
         groups[date] = [];
       }
@@ -46,10 +72,10 @@ const History = () => {
             <div key={date} className="transaction-date-group">
               <h2>{date}</h2>
               {groupedTransactions[date].map((transaction) => (
-                <div key={transaction.id} className="transaction">
-                  <span>Order #{transaction.orderNumber}</span>
-                  <span>{transaction.item}</span>
-                  <span>{transaction.price}</span>
+                <div key={transaction.orderID} className="transaction">
+                  <span>#{transaction.orderID}</span>
+                  <span>{transaction.orderStatus}</span>
+                  <span>${transaction.totalAmount}</span>
                 </div>
               ))}
             </div>

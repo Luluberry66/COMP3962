@@ -40,12 +40,11 @@ const ShopContextProvider = (props) => {
         };
 
         fetchProducts();
-    }, []); // Empty dependency array ensures this effect runs only once
+    }, []); 
 
 
     // shopping cart state
     const [cartItems,setCartItems] = useState(getDefaultCart());
-    console.log("Initial",cartItems);
 
     if (isLoggedIn) {
         console.log('User is logged in');
@@ -71,7 +70,25 @@ const ShopContextProvider = (props) => {
         .catch((error) => {
             console.error('Error:', error);
         });
-    }, []); 
+    }, [isLoggedIn]); 
+
+    useEffect(() => {
+        fetch('/updateShoppingCart', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ shoppingCart: cartItems }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }, [cartItems]);
 
     const clearCart = () =>{
         setCartItems(getDefaultCart());
@@ -80,27 +97,10 @@ const ShopContextProvider = (props) => {
     
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
-        console.log(cartItems);
-        // fetch('/updateShoppingCart', {
-        //     method: 'POST',
-        //     credentials: 'include',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ shoppingCart: cartItems }),
-        // })
     }
 
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-        // fetch('/updateShoppingCart', {
-        //     method: 'POST',
-        //     credentials: 'include',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ shoppingCart: cartItems }),
-        // })
     }
     
     const getTotalCartAmount = () => {

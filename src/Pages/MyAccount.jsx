@@ -19,6 +19,13 @@ const MyAccount = () => {
 
   const logoutBtn=()=>{
     setIsLoggedIn(false)
+    fetch('/logout', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
     navigate('/')
   }
 

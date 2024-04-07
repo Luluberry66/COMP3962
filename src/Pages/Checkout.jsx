@@ -15,7 +15,7 @@ const Checkout = () => {
   const [securityNum, setSecurityNum] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
   const [shippingPhone, setShippingPhone] = useState('');
-  const {clearCart} = useContext(ShopContext);
+  const {clearCart, cartItems, getTotalCartAmount} = useContext(ShopContext);
 
 
 
@@ -27,21 +27,23 @@ const Checkout = () => {
   };
 
   const handlePurchaseClick = () => {
-    //   if (!lastName.trim() || !firstName.trim() || !expiryDate.trim()) {
-        // setShowReminder(true); // Show reminder message if any field is empty
-    //   } else {
-        // TODO: send user data to backend to store for future login:
-        // sendUserData()=>{
-          // data: {
-          //   username: username
-          //   email: email
-          //   password: password
-          // }
-        // }
+      if (!lastName.trim() || !firstName.trim() || !expiryDate.trim()) {
+        setShowReminder(true); // Show reminder message if any field is empty
+      } else {
+        fetch('/placeOrder', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            orderItems: cartItems,
+            totalAmount: getTotalCartAmount(),
+          }),
+        });
         clearCart();
         navigate('/thankyou');
-    //   }
-
+      }
   };
 
 
