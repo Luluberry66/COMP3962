@@ -1,16 +1,18 @@
 import React from 'react'
 import './DescriptionBox.css'
 
-const DescriptionBox = () => {
+const DescriptionBox = (props) => {
+  const {product} = props;
+
   return (
     <div className='descriptionbox'>
       <div className="descriptionbox-navigator">
         <div className="descriptionbox-nav-box">Description</div>
       </div>
       <div className="descriptionbox-description">
-        <p>Will put description here</p>
+        <p><b>{product.name}</b></p>
           <p>
-         second paragraph of description here
+            {product.description}
           </p>
       </div>
     </div>
