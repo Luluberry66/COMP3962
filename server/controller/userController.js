@@ -81,7 +81,7 @@ const isLoggedIn = (req, res) => {
     console.log("checking if user is logged in...")
     if (req.session.authenticated) {
         console.log('user is logged in');
-        res.json({ authenticated: true });
+        res.json({ authenticated: true, email: req.session.email});
     } else {
         console.log('user is not logged in');
         res.json({ authenticated: false });

@@ -19,6 +19,7 @@ const UserInfoProvider = (props) => {
       .then((data) => {
         if (data.authenticated) {
           setIsLoggedIn(true);
+          setEmail(data.email);
         }
       });
   }, []);
