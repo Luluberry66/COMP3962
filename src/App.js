@@ -46,6 +46,9 @@ function App() {
     case "/signup":
       backgroundImage = home_bg_image;
       break;
+    case "/login":
+      backgroundImage = home_bg_image;
+      break;
     default:
       backgroundImage = "none";
   }
