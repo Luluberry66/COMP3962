@@ -26,12 +26,13 @@ const authenticateUser = async (req, res) => {
             res.status(500).json({ error: 'Internal server error' });
         } else {
             console.log('successfully authenticated user');
+            req.session.email = email;
+            req.session.authenticated = true;
+            // console.log(req.session);
             res.json({ success: 'User authenticated successfully' });
         }
     });
-    req.session.email = email;
-    req.session.authenticated = true;
-    // console.log(req.session);
+    
 }
 
 const register = async (req, res) => {
@@ -65,6 +66,8 @@ const register = async (req, res) => {
             try {
                 await docClient.send(new PutCommand(ddbParams));
                 console.log('successfully added user to dynamoDB');
+                req.session.email = email;
+                req.session.authenticated = true;
                 res.json({ success: 'User created successfully' });
             } catch (err) {
                 console.error('Error creating user:', err);
@@ -72,8 +75,17 @@ const register = async (req, res) => {
             }
         }
     });
-    req.session.email = email;
-    req.session.authenticated = true;
+}
+
+const isLoggedIn = (req, res) => {
+    console.log("checking if user is logged in...")
+    if (req.session.authenticated) {
+        console.log('user is logged in');
+        res.json({ authenticated: true });
+    } else {
+        console.log('user is not logged in');
+        res.json({ authenticated: false });
+    }
 }
 
 const logout = (req, res) => {
@@ -88,4 +100,4 @@ const logout = (req, res) => {
     });
 }
 
-export { authenticateUser, register, logout };
+export { authenticateUser, register, logout, isLoggedIn };

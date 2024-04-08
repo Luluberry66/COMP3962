@@ -49,16 +49,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(router);  // Use router
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 // Test route
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
     console.log(req.session);
+});
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // export dynamoDB credentialed modules

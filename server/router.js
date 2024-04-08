@@ -3,7 +3,7 @@ import express from 'express';
 // import modules below
 import { getItems } from './controller/getItems.js';
 import { testPost } from './controller/controller.js';
-import { register, authenticateUser, logout } from './controller/userController.js';
+import { register, authenticateUser, logout, isLoggedIn } from './controller/userController.js';
 import { getShoppingCart, updateShoppingCart, placeOrder, getOrderHistory } from './controller/checkoutController.js';
 
 
@@ -26,6 +26,8 @@ router.post('/updateShoppingCart', updateShoppingCart);
 router.post('/placeOrder', placeOrder);
 
 router.get('/getOrderHistory', getOrderHistory);
+
+router.get('/isLoggedIn', isLoggedIn);
 
 router.get('/logout', logout);
 

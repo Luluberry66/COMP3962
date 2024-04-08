@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const UserInfoContext = createContext(null);
 
@@ -6,6 +6,22 @@ const UserInfoProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    fetch('/isLoggedIn', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated) {
+          setIsLoggedIn(true);
+        }
+      });
+  }, []);
 
   const contextValue = {
     isLoggedIn,

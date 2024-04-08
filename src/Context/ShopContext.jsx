@@ -38,12 +38,6 @@ const ShopContextProvider = (props) => {
     // shopping cart state
     const [cartItems,setCartItems] = useState(getDefaultCart());
 
-    if (isLoggedIn) {
-        console.log('User is logged in');
-    } else {
-        console.log('User is not logged in');
-    }
-
     useEffect(() => {
         fetch('/getShoppingCart', {
             method: 'GET',

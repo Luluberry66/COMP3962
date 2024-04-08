@@ -5,7 +5,7 @@ import Hero from '../Components/Hero/Hero'
 const Home = () => {
 
   useEffect(() => {
-    fetch("/api").then(res => res.json()).then(data => console.log(data))
+    fetch("/isLoggedIn").then(res => res.json()).then(data => console.log(data))
   }, [])
 
   // test post 
